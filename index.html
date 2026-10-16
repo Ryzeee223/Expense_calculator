@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+    <title>Expense Calculator</title>
+
+    <style>
+        body {
+            background-color: gray;
+        }
+        
+        
+        text {
+            color :white;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container row d-box justify-content-center mx-auto">
+
+    <!-- first box -->
+    <div class="card mt-5 col-6"> 
+        <div class="card-header align-items-center">
+            <h3>Enter your expenses</h3>
+        </div>
+        <!-- main inputs -->
+    <div class="card-body">
+ <label for="Salary">
+    Salary:
+ </label>
+ <input type="number" id="Salary" name="Salary" class="form-control">
+
+ <label for="fare">Fare:</label>
+<input type="number" id="fare" name="fare" class="form-control">
+
+<label>Personal Savings</label>
+<input type="number" id="Psavings" name="savings" class="form-control">
+
+<label>Pagibig funds:</label>
+<input type="number" id="pagibig" name="pagibig" class="form-control">
+
+<label>Rent and Bills</label>
+<input type="number" id="rent" name="rent" class="form-control">
+
+<label>Stocks</label>
+<input type="number" id="stocks" name="stocks" class="form-control">
+
+
+
+<!-- button -->
+<div class="align-items-center justify-content-center d-flex">
+    <button class="bg-success btn-outline-dark rounded-pill" id="calculateBtn">Calculate</button>
+</div>
+
+
+</div>  
+    </div>
+
+    <!-- second box -->
+     <div class="card mt-5 col-5">
+        <div class="card-header align-items-center">
+            <h3>Total</h3>
+        </div>
+        
+        <!-- main output -->
+         <div class=" d-flex justify-content-center align-items-center">
+            <h1 id="Salary.value">0.00</h1>
+
+         
+         </div>
+         <div class="  ">
+            <br>
+            <h5 >SSS</span> <br>
+            <p id="sss.value">0.00</p> <br>
+            <h5 >Philhealth</span>
+            <p id="philhealth.value">0.00</p> <br>
+            <h5 >Fare</h5>
+            <p id="fare.value">0.00</p> <br>
+            <h5 >Personal Savings</h5>
+            <p id="Psavings.value">0.00</p> <br>
+            <span>Pagibig</span>
+            <p id="pagibig.value">0.00</p> <br>
+         
+
+            <span>Rent and Bills</span>
+            <p id="rent.value">0.00</p>
+               <span >Stocks</span> <br>
+            <p id="stocks.value">0.00</p> 
+            <hr>
+
+            <span>Remaining Balance:</span>
+            <p id="remainingBalance.value">0.00</p>
+         </div>
+
+     </div>
+</div>
+
+<!-- main logic -->
+<script>
+    // target the elements
+    const calculateBtn = document.getElementById("calculateBtn");
+    const Salary = document.getElementById("Salary");
+    const fare = document.getElementById("fare");
+    const Psavings = document.getElementById("Psavings");
+    const pagibig =document.getElementById("pagibig");
+    const stocks =document.getElementById("stocks");
+    const rent = document.getElementById("rent");
+
+
+    let weekly = 6 * 4; //calculate the week
+   
+   calculateBtn.addEventListener("click", function() {
+   let sss = Salary.value * 0.95;
+   let philhealth = sss * 0.95;
+
+   let totalFareinWeek = fare.value * weekly;
+
+    let totaloverall= philhealth - pagibig.value - Psavings.value - stocks.value - totalFareinWeek - rent.value;
+
+// display results
+   document.getElementById("sss.value").textContent = (sss * 0.05).toFixed(2);
+   document.getElementById("philhealth.value").textContent = (philhealth * 0.05).toFixed(2);
+   document.getElementById("fare.value").textContent = totalFareinWeek.toFixed(2);
+   document.getElementById("Psavings.value").textContent = Psavings.value;
+   document.getElementById("pagibig.value").textContent = pagibig.value;
+   document.getElementById("stocks.value").textContent = stocks.value;
+   document.getElementById("rent.value").textContent = rent.value;
+   document.getElementById("remainingBalance.value").textContent = totaloverall.toFixed(2);
+   document.getElementById("Salary.value").textContent = Salary.value;
+
+   });
+   </script>
+   
+</body>
+</html>
